@@ -1,0 +1,38 @@
+"use client";
+
+import {
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+} from "@/components/ui/sidebar";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { BookOpen, Home, Settings, BookCopy } from "lucide-react";
+
+const navItems = [
+  { href: "/", label: "Dashboard", icon: Home },
+  { href: "/books", label: "Book Locator", icon: BookOpen },
+  { href: "/subjects", label: "My Subjects", icon: BookCopy },
+];
+
+export function SidebarNav() {
+  const pathname = usePathname();
+
+  return (
+    <SidebarMenu>
+      {navItems.map((item) => (
+        <SidebarMenuItem key={item.label}>
+          <Link href={item.href} legacyBehavior passHref>
+            <SidebarMenuButton
+              isActive={pathname === item.href}
+              tooltip={{ children: item.label }}
+            >
+              <item.icon />
+              <span>{item.label}</span>
+            </SidebarMenuButton>
+          </Link>
+        </SidebarMenuItem>
+      ))}
+    </SidebarMenu>
+  );
+}
