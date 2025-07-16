@@ -23,8 +23,8 @@ const IntelligentBookSearchOutputSchema = z.object({
         title: z.string().describe('The title of the book.'),
         author: z.string().describe('The author of the book.'),
         description: z.string().describe('A short description of the book.'),
-        coverImageUrl: z.string().describe('URL of the book cover image.'),
-        url: z.string().describe('URL where the book can be found or purchased.'),
+        coverImageUrl: z.string().url().describe('URL of the book cover image.'),
+        url: z.string().url().describe('URL where the book can be found or purchased.'),
       })
     )
     .describe('A list of relevant books.'),
@@ -43,6 +43,7 @@ const prompt = ai.definePrompt({
 
   Given the subject: {{{subject}}}
   Recommend a list of relevant books. Each book object should have the following fields: title, author, description, coverImageUrl, and url.
+  The coverImageUrl and url must be valid URLs.
   Return the output in JSON format.
   `,
 });

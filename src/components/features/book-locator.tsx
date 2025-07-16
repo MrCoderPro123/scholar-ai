@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -164,7 +165,7 @@ export function BookLocator() {
       {!isLoading && books.length > 0 && (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {books.map((book) => (
-            <BookCard key={book.title} book={book} />
+            book.title && book.author && book.coverImageUrl ? <BookCard key={book.title} book={book} /> : null
           ))}
         </div>
       )}
