@@ -1,14 +1,7 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  // IMPORTANT: Add 'output: 'export'' for static site generation
-  output: 'export',
-
-  // IMPORTANT: Configure basePath for GitHub Pages
-  // Your GitHub Pages URL is https://MrCoderPro123.github.io/scholar-ai/
-  // So, the basePath should be '/scholar-ai'
-  basePath: '/scholar-ai',
-
+  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -16,8 +9,9 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    // IMPORTANT: Disable image optimization for static export
-    unoptimized: true,
+    // unoptimized: true is usually NOT needed on Vercel, as it provides image optimization
+    // if you want image optimization, remove this line:
+    // unoptimized: true, 
     remotePatterns: [
       {
         protocol: 'https',
@@ -45,9 +39,6 @@ const nextConfig: NextConfig = {
       }
     ],
   },
-  // Optional: If you're using the App Router and have issues with refresh leading to 404s,
-  // consider uncommenting trailingSlash (though it can sometimes cause other issues).
-  // trailingSlash: true,
 };
 
 export default nextConfig;
